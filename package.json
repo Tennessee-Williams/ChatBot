@@ -1,0 +1,18 @@
+{
+  "name": "chatbot-rag",
+  "version": "1.0.0",
+  "description": "RAG chatbot with Pinecone vector database",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "create-index": "node createIndex.js",
+    "load-docs": "node loadDocuments.js",
+    "query": "node query.js"
+  },
+  "dependencies": {
+    "@pinecone-database/pinecone": "^4.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.2.1",
+    "openai": "^4.85.0"
+  }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charlie — The Cox Group Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <img src="/Images/The Cox Group_.png" alt="The Cox Group" class="logo" />
+    <div class="header-text">
+      <h1>Employee Assistant</h1>
+    </div>
+    <button class="new-chat-btn" onclick="resetChat()" title="New conversation">+ New Chat</button>
+  </header>
+
+  <div class="app">
+    <!-- Chat Container -->
+    <div class="chat-container" id="chatContainer">
+      <!-- Welcome message -->
+      <div class="welcome-card" id="welcomeCard">
+        <img src="/Images/Avatar.png" alt="Charlie" class="welcome-avatar" />
+        <h2>Hey there! I'm Charlie 👋</h2>
+        <p>Your friendly HR assistant at The Cox Group. Ask me anything about company policies, benefits, PTO, and more!</p>
+        <div class="quick-questions">
+          <button class="quick-btn" onclick="askQuestion('What health insurance plans are available?')">🏥 Health Insurance</button>
+          <button class="quick-btn" onclick="askQuestion('How does the 401k plan work?')">💰 401(k) Plan</button>
+          <button class="quick-btn" onclick="askQuestion('What is the PTO policy?')">🏖️ PTO Policy</button>
+          <button class="quick-btn" onclick="askQuestion('How do I submit an expense report?')">🧾 Expenses</button>
+        </div>
+      </div>
+
+      <!-- Messages will be inserted here -->
+      <div id="messages"></div>
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator">
+        <img src="/Images/Avatar.png" alt="Charlie" class="msg-avatar" />
+        <div class="typing-bubble">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <div class="input-wrapper">
+        <textarea
+          id="messageInput"
+          placeholder="Ask Charlie a question..."
+          rows="1"
+          autofocus
+        ></textarea>
+        <button id="sendBtn" onclick="sendMessage()" title="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <p class="disclaimer">Charlie uses AI to answer from company documents. Always verify critical details with HR.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

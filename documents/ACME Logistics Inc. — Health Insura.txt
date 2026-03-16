@@ -1,0 +1,9 @@
+ACME Logistics Inc. — Health Insurance Benefits Summary
+Plan Year: 2025
+
+ACME offers three health insurance plans through BlueCross BlueShield:
+- Plan A (High Deductible): $1,500 individual / $3,000 family deductible. Monthly premium: $120/individual, $340/family.
+- Plan B (PPO): $750 individual / $1,500 family deductible. Monthly premium: $210/individual, $520/family.
+- Plan C (HMO): $500 individual / $1,000 family deductible. Monthly premium: $260/individual, $620/family.
+
+Open enrollment is held each November. New employees may enroll within 30 days of hire.
