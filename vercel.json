@@ -1,5 +1,5 @@
 {
-  "buildCommand": false,
+  "buildCommand": null,
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/api/chat", "destination": "/api/chat" }
