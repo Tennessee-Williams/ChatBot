@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     const topScore = results.matches.length > 0 ? (results.matches[0].score ?? 0) : 0;
 
     // If the best match score is too low, the question is off-topic — bail out early
-    if (topScore < 0.4) {
+    if (topScore < 0.2) {
       return res.json({
         reply: "I'm Charlie, your HR assistant for The Cox Group, and I can only help with questions about your employee benefits, HR policies, and company documents. It looks like your question falls outside that scope. Feel free to ask anything benefits- or HR-related, and I'll be happy to help!",
         sources: [],
