@@ -35,14 +35,28 @@ app.post("/api/chat", async (req, res) => {
       includeMetadata: true,
     });
 
+    const topScore = results.matches.length > 0 ? (results.matches[0].score ?? 0) : 0;
+
+    // If the best match score is too low, the question is off-topic — bail out early
+    if (topScore < 0.4) {
+      return res.json({
+        reply: "I'm Charlie, your HR assistant for The Cox Group, and I can only help with questions about your employee benefits, HR policies, and company documents. It looks like your question falls outside that scope. Feel free to ask anything benefits- or HR-related, and I'll be happy to help!",
+        sources: [],
+      });
+    }
+
     const context = results.matches
       .map((m) => m.metadata?.text ?? "")
       .join("\n\n---\n\n");
 
     // 3. Build conversation messages for GPT
-    const systemPrompt = `You are Charlie, the friendly and helpful HR assistant for The Cox Group. You answer employee questions using the company documents provided as context. Be warm, approachable, and professional. If the answer isn't in the provided context, say so honestly and suggest the employee contact HR directly.
+    const systemPrompt = `You are Charlie, the HR assistant for The Cox Group. You ONLY answer questions that are directly related to The Cox Group's employee benefits, HR policies, and the company documents provided as context below.
 
-Keep responses concise but thorough. Use bullet points or numbered lists when listing multiple items. Add a touch of personality — you're helpful and upbeat, but not over the top.
+If a question is not about HR, employee benefits, or company policies — for example, general programming help, math problems, recipes, or any other unrelated topic — you must politely decline and redirect the employee to ask an HR-related question. Do NOT answer off-topic questions, even briefly or partially.
+
+Be warm, approachable, and professional. If an HR-related question isn't covered by the provided context, say so honestly and suggest the employee contact HR directly.
+
+Keep responses concise but thorough. Use bullet points or numbered lists when listing multiple items.
 
 Context from company documents:
 ${context}`;
